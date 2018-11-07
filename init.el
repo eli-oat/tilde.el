@@ -168,13 +168,13 @@
   (global-company-mode +1))
 
 ;; A Very Tiny User Manual
-(condition-case err
-    (let ((buffer (get-buffer-create "*manual*")))
-      (with-current-buffer buffer
-        (insert-file-contents "~/.emacs.d/README.md")
-        (markdown-mode))
-      (setq initial-buffer-choice buffer))
-  (error (message "%s" error-message-string err)))
+;;(condition-case err
+;;    (let ((buffer (get-buffer-create "*manual*")))
+;;      (with-current-buffer buffer
+;;        (insert-file-contents "~/.emacs.d/README.md")
+;;        (markdown-mode))
+;;      (setq initial-buffer-choice buffer))
+;;  (error (message "%s" error-message-string err)))
 
 ;; Disable backup files
 (setq make-backup-files nil) ; stop creating backup~ files
