@@ -5,18 +5,12 @@
 (menu-bar-mode   -1)
 (add-hook 'prog-mode-hook 'linum-mode)
 
-;; Ident new lines like the previous
-(electric-indent-mode +1)
-;; Matching deliminers
-(electric-pair-mode 1)
-;; Highlight the current line
-(global-hl-line-mode 1)
-;; Wrap lines
-(global-visual-line-mode 1)
-;; Pretty symbols
-(global-prettify-symbols-mode 1)
-;; Show matching parens
-(show-paren-mode 1)
+;; Basic stuff to make writing code better
+(electric-indent-mode +1) ;; Ident new lines like the previous
+(electric-pair-mode 1) ;; Matching deliminers
+(global-visual-line-mode 1) ;; Wrap lines
+(global-prettify-symbols-mode 1) ;; Pretty symbols
+(show-paren-mode 1) ;; Show matching parens
 
 ;; Blank Scratch 
 (setq inhibit-startup-message t
@@ -167,6 +161,7 @@
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
 
 ;; Company 
 (use-package 
@@ -176,6 +171,11 @@
   :config (company-mode +1) 
   (global-company-mode +1))
 
+;; Git ╰(˙ᗜ˙)੭━☆ﾟ.*･｡ﾟ
+(use-package 
+  magit 
+:ensure t)
+
 ;; A Very Tiny User Manual
 ;;(condition-case err
 ;;    (let ((buffer (get-buffer-create "*manual*")))
@@ -184,7 +184,6 @@
 ;;        (markdown-mode))
 ;;      (setq initial-buffer-choice buffer))
 ;;  (error (message "%s" error-message-string err)))
-
 
 ;; Disable backup files
 (setq make-backup-files nil) ; stop creating backup~ files
