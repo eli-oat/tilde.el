@@ -105,7 +105,7 @@
 ;; Smartparens
 (use-package smartparens-config 
     :defer 2 
-    :config (show-smartparens-global-mode t) 
+    :config (show-smartparens-global-mode t)
     (smartparens-global-mode t))
 
 ;; Rainbows
@@ -158,6 +158,8 @@
   :defer 2
   :ensure t)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
 
 ;; Company 
 (use-package 
