@@ -169,6 +169,12 @@
   :config (company-mode +1) 
   (global-company-mode +1))
 
+;; Automatically match braces, parens and whatnot 
+(use-package
+    syntactic-close
+    :defer 2
+    :ensure t)
+
 ;; A Very Tiny User Manual
 ;;(condition-case err
 ;;    (let ((buffer (get-buffer-create "*manual*")))
@@ -178,28 +184,6 @@
 ;;      (setq initial-buffer-choice buffer))
 ;;  (error (message "%s" error-message-string err)))
 
-;; Match braces, parens, and what not
-(defconst all-paren-syntax-table2
-    (let ((table (make-syntax-table)))
-        (modify-syntax-entry ?{ "(}" table)
-        (modify-syntax-entry ?} "){" table)
-        (modify-syntax-entry ?\( "()" table)
-            (modify-syntax-entry ?\) ")(" table)
-        (modify-syntax-entry ?\[ "(]" table)
-        (modify-syntax-entry ?\] ")[" table)
-        (modify-syntax-entry ?\\ "'" table)
-        table)
-"A syntax table giving all parenthesis parenthesis syntax.")
-(defun close-quoted-open-paren ()
-    (interactive)
-    (let (pos closing)
-        (with-syntax-table all-paren-syntax-table2
-            (setq pos (save-excursion (up-list -1) (point)))
-            (setq closing (matching-paren (char-after pos))))
-        (and (eq (char-syntax (char-before pos)) ?\\)
-            (not (eq (char-syntax (char-before (1- pos))) ?\\))
-            (insert (char-before pos)))
-        (insert closing)))
 
 ;; Disable backup files
 (setq make-backup-files nil) ; stop creating backup~ files
