@@ -171,19 +171,25 @@
   :config (company-mode +1) 
   (global-company-mode +1))
 
-;; Git ╰(˙ᗜ˙)੭━☆ﾟ.*･｡ﾟ
-(use-package 
-  magit 
-:ensure t)
+;; Lumpy Space Princess! (only works on emacs 26+)
+;; (use-package
+;;     eglot
+;;     :defer 2
+;;     ensure t)
+
+;; Git ╰(˙ᗜ˙)੭━☆ﾟ.*･｡ﾟ (only works on emacs 25+)
+;; (use-package 
+;;   magit 
+;; :ensure t)
 
 ;; A Very Tiny User Manual
-;;(condition-case err
-;;    (let ((buffer (get-buffer-create "*manual*")))
-;;      (with-current-buffer buffer
-;;        (insert-file-contents "~/.emacs.d/README.md")
-;;        (markdown-mode))
-;;      (setq initial-buffer-choice buffer))
-;;  (error (message "%s" error-message-string err)))
+;; (condition-case err
+;;     (let ((buffer (get-buffer-create "*manual*")))
+;;       (with-current-buffer buffer
+;;         (insert-file-contents "~/.emacs.d/README.md")
+;;         (markdown-mode))
+;;       (setq initial-buffer-choice buffer))
+;;   (error (message "%s" error-message-string err)))
 
 ;; Disable backup files
 (setq make-backup-files nil) ; stop creating backup~ files
