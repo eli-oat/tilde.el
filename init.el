@@ -115,12 +115,6 @@
 (setq show-paren-delay 0)
 (show-paren-mode 1)
 
-;; Smartparens
-(use-package 
-    smartparens-config 
-    :config (show-smartparens-global-mode t) 
-    (smartparens-global-mode t))
-
 ;; Rainbows
 (use-package rainbow-delimiters 
     :defer 2 
