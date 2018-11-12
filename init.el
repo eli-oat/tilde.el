@@ -178,6 +178,29 @@
 ;;      (setq initial-buffer-choice buffer))
 ;;  (error (message "%s" error-message-string err)))
 
+;; Match braces, parens, and what not
+(defconst all-paren-syntax-table2
+    (let ((table (make-syntax-table)))
+        (modify-syntax-entry ?{ "(}" table)
+        (modify-syntax-entry ?} "){" table)
+        (modify-syntax-entry ?\( "()" table)
+            (modify-syntax-entry ?\) ")(" table)
+        (modify-syntax-entry ?\[ "(]" table)
+        (modify-syntax-entry ?\] ")[" table)
+        (modify-syntax-entry ?\\ "'" table)
+        table)
+"A syntax table giving all parenthesis parenthesis syntax.")
+(defun close-quoted-open-paren ()
+    (interactive)
+    (let (pos closing)
+        (with-syntax-table all-paren-syntax-table2
+            (setq pos (save-excursion (up-list -1) (point)))
+            (setq closing (matching-paren (char-after pos))))
+        (and (eq (char-syntax (char-before pos)) ?\\)
+            (not (eq (char-syntax (char-before (1- pos))) ?\\))
+            (insert (char-before pos)))
+        (insert closing)))
+
 ;; Disable backup files
 (setq make-backup-files nil) ; stop creating backup~ files
 (setq auto-save-default nil) ; stop creating #autosave# files
