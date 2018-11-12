@@ -5,6 +5,19 @@
 (menu-bar-mode   -1)
 (add-hook 'prog-mode-hook 'linum-mode)
 
+;; Ident new lines like the previous
+(electric-indent-mode +1)
+;; Matching deliminers
+(electric-pair-mode 1)
+;; Highlight the current line
+(global-hl-line-mode 1)
+;; Wrap lines
+(global-visual-line-mode 1)
+;; Pretty symbols
+(global-prettify-symbols-mode 1)
+;; Show matching parens
+(show-paren-mode 1)
+
 ;; Blank Scratch 
 (setq inhibit-startup-message t
     initial-scratch-message nil)
@@ -103,9 +116,9 @@
 (show-paren-mode 1)
 
 ;; Smartparens
-(use-package smartparens-config 
-    :defer 2 
-    :config (show-smartparens-global-mode t)
+(use-package 
+    smartparens-config 
+    :config (show-smartparens-global-mode t) 
     (smartparens-global-mode t))
 
 ;; Rainbows
@@ -168,12 +181,6 @@
   :ensure t 
   :config (company-mode +1) 
   (global-company-mode +1))
-
-;; Automatically match braces, parens and whatnot 
-(use-package
-    syntactic-close
-    :defer 2
-    :ensure t)
 
 ;; A Very Tiny User Manual
 ;;(condition-case err
