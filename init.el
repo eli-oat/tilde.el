@@ -6,8 +6,8 @@
 (add-hook 'prog-mode-hook 'linum-mode)
 
 ;; Basic stuff to make writing code better
-(electric-indent-mode +1) ;; Ident new lines like the previous
-(electric-pair-mode 1) ;; Matching deliminers
+(electric-indent-mode +1) ;; Indent new lines like the previous
+(electric-pair-mode 1) ;; Matching delimiters
 (global-visual-line-mode 1) ;; Wrap lines
 (global-prettify-symbols-mode 1) ;; Pretty symbols
 (show-paren-mode 1) ;; Show matching parens
@@ -168,30 +168,37 @@
   :config (company-mode +1) 
   (global-company-mode +1))
 
-;; SLIME
-(use-package slime
-    :defer 2
-    :ensure t
-    :config (setq inferior-lisp-program "sbcl")
-    (setq slime-contribs '(slime-fancy 
-        slime-sbcl-exts
-        slime-cl-indent
-        slime-sprof
-        slime-asdf
-        slime-fancy-inspector
-        slime-company
-        slime-autodoc)))
 
-;; Lumpy Space Princess! (only works on emacs 26+)
-;; (use-package
-;;     eglot
-;;     :defer 2
-;;     ensure t)
+;; Use these packages conditionally, upon emacs version number
+ (if (>= emacs-major-version 26)
+    (
+    ;; Include these packages if you are running emacs 26+
+    
+    ;; SLIME
+    (use-package slime
+        :defer 2
+        :ensure t
+        :config (setq inferior-lisp-program "/usr/local/bin/sbcl")
+        (setq slime-contribs '(slime-fancy 
+            slime-sbcl-exts
+            slime-cl-indent
+            slime-asdf
+            slime-fancy-inspector
+            slime-autodoc)))
 
-;; Git ╰(˙ᗜ˙)੭━☆ﾟ.*･｡ﾟ (only works on emacs 25+)
-;; (use-package 
-;;   magit 
-;; :ensure t)
+    ;; Lumpy Space Princess! (only works on emacs 26+)
+    (use-package eglot
+        :defer 2
+        ensure t)
+
+    ;; Git ╰(˙ᗜ˙)੭━☆ﾟ.*･｡ﾟ (only works on emacs 25+)
+    (use-package 
+        magit
+        :defer 2 
+        :ensure t))
+
+    ;; And if you are running an older version...
+    (message "OLD!?"))
 
 ;; A Very Tiny User Manual
 ;; (condition-case err
