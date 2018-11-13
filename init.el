@@ -171,6 +171,14 @@
   :config (company-mode +1) 
   (global-company-mode +1))
 
+;; SLIME
+(use-package
+    slime
+    :defer 2
+    :ensure t
+    :config (setq inferior-lisp-program "sbcl")
+    (setq slime-contribs '(slime-fancy)))
+
 ;; Lumpy Space Princess! (only works on emacs 26+)
 ;; (use-package
 ;;     eglot
