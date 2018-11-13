@@ -6,11 +6,11 @@
 (add-hook 'prog-mode-hook 'linum-mode)
 
 ;; Basic stuff to make writing code better
-(electric-indent-mode +1) ;; Indent new lines like the previous
-(electric-pair-mode 1) ;; Matching delimiters
-(global-visual-line-mode 1) ;; Wrap lines
-(global-prettify-symbols-mode 1) ;; Pretty symbols
-(show-paren-mode 1) ;; Show matching parens
+(electric-indent-mode +1) ; Indent new lines like the previous
+(electric-pair-mode 1) ; Matching delimiters
+(global-visual-line-mode 1) ; Wrap lines
+(global-prettify-symbols-mode 1) ; Pretty symbols
+(show-paren-mode 1) ; Show matching parens
 
 ;; Blank Scratch 
 (setq inhibit-startup-message t
@@ -169,11 +169,15 @@
   (global-company-mode +1))
 
 
+;; Are you running emacs in the terminal or in a gui?
+(if (display-graphic-p)
+    (set-default-font "Hack 14") ; if emacs is running in a GUI set a big ol' font!
+    (message "Terminals, FTW!"))
+
 ;; Use these packages conditionally, upon emacs version number
  (if (>= emacs-major-version 26)
     (
     ;; Include these packages if you are running emacs 26+
-    
     ;; SLIME
     (use-package slime
         :defer 2
@@ -198,7 +202,7 @@
         :ensure t))
 
     ;; And if you are running an older version...
-    (message "OLD!?"))
+    (message "You are running a version of emacs older than 26. A couple of packages haven't been installed to avoid compatibility issues."))
 
 ;; A Very Tiny User Manual
 ;; (condition-case err
