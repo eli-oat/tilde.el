@@ -1,6 +1,3 @@
-(message "Found tilde.el")
-
-
 ;; Minimal UI
 (scroll-bar-mode -1)
 (tool-bar-mode   -1)
@@ -13,7 +10,14 @@
 (electric-pair-mode 1) ; Matching delimiters
 (global-visual-line-mode 1) ; Wrap lines
 (global-prettify-symbols-mode 1) ; Pretty symbols
-(show-paren-mode 1) ; Show matching parens
+
+; Show Matching Parens
+(setq show-paren-delay 0)
+(show-paren-mode 1)
+
+;; Disable backup files
+(setq make-backup-files nil) ; stop creating backup~ files
+(setq auto-save-default nil) ; stop creating #autosave# files
 
 ;; Blank Scratch
 (setq inhibit-startup-message t
@@ -22,14 +26,12 @@
 ;; Vim Mode
 (use-package evil
     :ensure t
-    :config
-    (evil-mode 1))
+    :config (evil-mode 1))
 (use-package evil-escape
     :ensure t
     :init
     (setq-default evil-escape-key-sequence "jk")
-    :config
-    (evil-escape-mode 1))
+    :config (evil-escape-mode 1))
 
 ;; Theme
 (use-package dracula-theme
@@ -55,8 +57,7 @@
         helm-echo-input-in-header-line t
         helm-autoresize-max-height 0
         helm-autoresize-min-height 20)
-    :config
-    (helm-mode 1))
+    :config (helm-mode 1))
 
 ;; Which Key
 (use-package which-key
@@ -64,8 +65,7 @@
     :init
     (setq which-key-separator " ")
     (setq which-key-prefix-prefix "+")
-    :config
-    (which-key-mode 1))
+    :config (which-key-mode 1))
 
 ;; Custom Key Bindings
 (use-package general
@@ -87,14 +87,10 @@
         "wx"  '(delete-window :which-key "delete window")
         "at"  '(ansi-term :which-key "open terminal")))
 
-;; Show Matching Parens
-(setq show-paren-delay 0)
-(show-paren-mode 1)
-
 ;; Rainbows
 (use-package rainbow-delimiters
-    :defer 2
     :ensure t
+    :defer 2
     :config (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)) ; on by default
 (use-package rainbow-identifiers
     :ensure t
@@ -102,8 +98,8 @@
 
 ;; Indent Guide
 (use-package indent-guide
-    :defer 2
     :ensure t
+    :defer 2
     :config (indent-guide-global-mode)) ; on by default
 
 ;; Markdown Mode
@@ -120,17 +116,14 @@
 ;; Org Mode
 (use-package org
   :mode (("\\.org$" . org-mode))
-  :ensure org-plus-contrib
-  :config
-  (progn
-    ;; config stuff
-        ))
+  :ensure t
+  :defer 2)
 
 ;; Flycheck
 (use-package flycheck
-  :defer 2
-  :ensure t
-  :config(global-flycheck-mode))
+    :ensure t
+    :defer 2
+    :config (global-flycheck-mode))
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; Web Mode
@@ -148,27 +141,3 @@
   :ensure t
   :config (company-mode +1)
   (global-company-mode +1))
-
-;; Use these packages conditionally, upon emacs version number
- (if (>= emacs-major-version 26)
-    (;; Include these packages if you are running emacs 26+
-    
-    ;; Lumpy Space Princess! (only works on emacs 26+)
-    (use-package eglot
-        :defer 2
-        :ensure t)
-
-    ;; Projectile
-    (use-package projectile
-        :ensure t
-        :init
-        (setq projectile-require-project-root nil)
-        :config (projectile-mode 1))
-
-    ;; And if you are running an older version...
-    (message "HARK! You are running a version of emacs older than 26. A couple of packages haven't been installed to avoid compatibility issues."))
-
-;; Disable backup files
-(setq make-backup-files nil) ; stop creating backup~ files
-(setq auto-save-default nil) ; stop creating #autosave# files
-
