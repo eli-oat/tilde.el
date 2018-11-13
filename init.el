@@ -106,17 +106,16 @@
 (use-package rainbow-delimiters
     :defer 2
     :ensure t
-    :config (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+    :config (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)) ; on by default
 (use-package rainbow-identifiers
     :ensure t
-    :defer 2
-    :config (add-hook 'prog-mode-hook 'rainbow-identifiers-mode))
+    :defer 2)
 
 ;; Indent Guide
 (use-package indent-guide
     :defer 2
     :ensure t
-    :config (indent-guide-global-mode))
+    :config (indent-guide-global-mode)) ; on by default
 
 ;; Markdown Mode
 (use-package markdown-mode
@@ -161,6 +160,18 @@
   :config (company-mode +1)
   (global-company-mode +1))
 
+;; SLIME
+(defvar LISP-VERSION "/usr/local/bin/sbcl") ; configure your preferred flavor of lisp
+(use-package slime
+    :defer 2
+    :ensure t
+    :config (setq inferior-lisp-program LISP-VERSION)
+    (setq slime-contribs '(slime-fancy
+        slime-sbcl-exts
+        slime-cl-indent
+        slime-asdf
+        slime-fancy-inspector
+        slime-autodoc)))
 
 ;; Are you running emacs in the terminal or in a gui?
 (if (display-graphic-p)
@@ -169,20 +180,8 @@
 
 ;; Use these packages conditionally, upon emacs version number
  (if (>= emacs-major-version 26)
-    (
-    ;; Include these packages if you are running emacs 26+
-    ;; SLIME
-    (use-package slime
-        :defer 2
-        :ensure t
-        :config (setq inferior-lisp-program "/usr/local/bin/sbcl")
-        (setq slime-contribs '(slime-fancy
-            slime-sbcl-exts
-            slime-cl-indent
-            slime-asdf
-            slime-fancy-inspector
-            slime-autodoc)))
-
+    (;; Include these packages if you are running emacs 26+
+    
     ;; Lumpy Space Princess! (only works on emacs 26+)
     (use-package eglot
         :defer 2
