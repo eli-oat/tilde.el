@@ -169,18 +169,18 @@
   (global-company-mode +1))
 
 ;; SLIME
-(ensure-packages 'slime 'slime-company)
-(setf inferior-lisp-program "sbcl")
-(setf slime-lisp-host "localhost")
-(slime-setup
- '(slime-fancy
-   slime-sbcl-exts
-   slime-cl-indent
-   slime-sprof
-   slime-asdf
-   slime-fancy-inspector
-   slime-company
-slime-autodoc))
+(use-package slime
+    :defer 2
+    :ensure t
+    :config (setq inferior-lisp-program "sbcl")
+    (setq slime-contribs '(slime-fancy 
+        slime-sbcl-exts
+        slime-cl-indent
+        slime-sprof
+        slime-asdf
+        slime-fancy-inspector
+        slime-company
+        slime-autodoc)))
 
 ;; Lumpy Space Princess! (only works on emacs 26+)
 ;; (use-package
