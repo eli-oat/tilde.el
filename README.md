@@ -2,6 +2,10 @@
 
 This started as a bare-bones setup for noodling on [tilde.town](https://tilde.town), but has since become my go-to setup for all things emacs. Evil, sort of like a really tiny [spacemacs](http://spacemacs.org/).
 
+- `init.el` handles initialization of some important stuff, but should be left more or less as is. 
+- `tilde.el` is where the action happens. This is where all packages and settings are configured
+- `tree-fort.el` is an optional custom config. If the file is present it will be initialized after `tilde.el`. If you wish to expand or modify this configuration this is where I recommend that you do that 
+
 ## Key Chords of Note
 ### General:
 ```
