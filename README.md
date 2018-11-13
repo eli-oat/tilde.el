@@ -1,6 +1,6 @@
 # User Manual 
 
-This is the *very* bare-bones setup that I use when fiddling around on [tilde.town](https://tilde.town).
+This started as a bare-bones setup for noodling on [tilde.town](https://tilde.town), but has since become my go-to setup for all things emacs. Evil, sort of like a really tiny [spacemacs](http://spacemacs.org/).
 
 ## Key Chords of Note
 ### General:
