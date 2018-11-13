@@ -146,16 +146,14 @@
         ))
 
 ;; Flycheck 
-(use-package 
-  flycheck 
+(use-package flycheck 
   :defer 2 
   :ensure t 
   :config(global-flycheck-mode))
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; Web Mode
-(use-package
-  web-mode
+(use-package web-mode
   :defer 2
   :ensure t)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
@@ -164,20 +162,25 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
 
 ;; Company 
-(use-package 
-  company 
+(use-package company 
   :defer 2 
   :ensure t 
   :config (company-mode +1) 
   (global-company-mode +1))
 
 ;; SLIME
-(use-package
-    slime
-    :defer 2
-    :ensure t
-    :config (setq inferior-lisp-program "sbcl")
-    (setq slime-contribs '(slime-fancy)))
+(ensure-packages 'slime 'slime-company)
+(setf inferior-lisp-program "sbcl")
+(setf slime-lisp-host "localhost")
+(slime-setup
+ '(slime-fancy
+   slime-sbcl-exts
+   slime-cl-indent
+   slime-sprof
+   slime-asdf
+   slime-fancy-inspector
+   slime-company
+slime-autodoc))
 
 ;; Lumpy Space Princess! (only works on emacs 26+)
 ;; (use-package
