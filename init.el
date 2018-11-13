@@ -98,13 +98,6 @@
         "wx"  '(delete-window :which-key "delete window")
         "at"  '(ansi-term :which-key "open terminal")))
 
-;; NeoTree
-(use-package all-the-icons :ensure t)
-(use-package neotree
-    :ensure t
-    :init
-    (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
-
 ;; Show Matching Parens
 (setq show-paren-delay 0)
 (show-paren-mode 1)
