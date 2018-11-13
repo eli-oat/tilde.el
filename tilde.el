@@ -168,12 +168,3 @@
 ;; Disable backup files
 (setq make-backup-files nil) ; stop creating backup~ files
 (setq auto-save-default nil) ; stop creating #autosave# files
-
-;; A Very Tiny User Manual
-;; (condition-case err
-;;     (let ((buffer (get-buffer-create "*manual*")))
-;;       (with-current-buffer buffer
-;;         (insert-file-contents "~/.emacs.d/README.md")
-;;         (markdown-mode))
-;;       (setq initial-buffer-choice buffer))
-;;   (error (message "%s" error-message-string err)))

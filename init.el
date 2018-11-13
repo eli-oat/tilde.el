@@ -22,5 +22,7 @@
 
 (load "~/.emacs.d/tilde.el")
 
-(when (file-exists-p "~/.emacs.d/tree-fort.el") 
-    (load "~/.emacs.d/tree-fort.el"))
+(when (file-exists-p "~/.emacs.d/tree-fort.el")
+    (message "Found tree-fort.el")
+    (load "~/.emacs.d/tree-fort.el")
+    (message "Loaded tree-fort.el"))
