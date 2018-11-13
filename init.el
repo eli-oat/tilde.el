@@ -1,8 +1,8 @@
 ;; Collect *ALL* the garbage
 (setq gc-cons-threshold 100000000)
 
-;; Collect slightly less garbage while running
-(add-hook 'after-init-hook 
+;; Collect slightly less garbage while running to improve performance
+(add-hook 'after-init-hook
     (lambda ()
         (setq gc-cons-threshold 400000)))
 
@@ -20,7 +20,9 @@
     (package-install 'use-package))
 (require 'use-package)
 
+;; Load the config
 (load "~/.emacs.d/tilde.el")
 
+;; If tree-fort.el exists import it. Use tree-fort.el for personal config stuff
 (when (file-exists-p "~/.emacs.d/tree-fort.el")
     (load "~/.emacs.d/tree-fort.el"))
