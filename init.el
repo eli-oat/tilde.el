@@ -171,7 +171,7 @@
 
 ;; Are you running emacs in the terminal or in a gui?
 (if (display-graphic-p)
-    (set-default-font "Hack 14") ; if emacs is running in a GUI set a big ol' font!
+    (set-frame-font "Hack 16") ; if emacs is running in a GUI set a big ol' font!
     (message "Terminals, FTW!"))
 
 ;; Use these packages conditionally, upon emacs version number
@@ -193,7 +193,7 @@
     ;; Lumpy Space Princess! (only works on emacs 26+)
     (use-package eglot
         :defer 2
-        ensure t)
+        :ensure t)
 
     ;; Git ╰(˙ᗜ˙)੭━☆ﾟ.*･｡ﾟ (only works on emacs 25+)
     (use-package 
