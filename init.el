@@ -1,3 +1,6 @@
+(message "Found init.el")
+
+
 ;; Collect *ALL* the garbage
 (setq gc-cons-threshold 100000000)
 
@@ -23,6 +26,7 @@
 (load "~/.emacs.d/tilde.el")
 
 (when (file-exists-p "~/.emacs.d/tree-fort.el")
-    (message "Found tree-fort.el")
-    (load "~/.emacs.d/tree-fort.el")
-    (message "Loaded tree-fort.el"))
+    (load "~/.emacs.d/tree-fort.el"))
+
+
+
