@@ -12,7 +12,7 @@
 (global-prettify-symbols-mode 1) ; Pretty symbols
 (show-paren-mode 1) ; Show matching parens
 
-;; Blank Scratch 
+;; Blank Scratch
 (setq inhibit-startup-message t
     initial-scratch-message nil)
 
@@ -24,7 +24,7 @@
     ("melpa" .  "https://melpa.org/packages/")))
 (package-initialize)
 
-;; Bootstrap `use-package`
+;; Bootstrap use-package
 (unless (package-installed-p 'use-package)
     (package-refresh-contents)
     (package-install 'use-package))
@@ -103,29 +103,29 @@
 (show-paren-mode 1)
 
 ;; Rainbows
-(use-package rainbow-delimiters 
-    :defer 2 
-    :ensure t 
+(use-package rainbow-delimiters
+    :defer 2
+    :ensure t
     :config (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
-(use-package rainbow-identifiers 
-    :ensure t 
-    :defer 2 
+(use-package rainbow-identifiers
+    :ensure t
+    :defer 2
     :config (add-hook 'prog-mode-hook 'rainbow-identifiers-mode))
 
 ;; Indent Guide
-(use-package indent-guide 
+(use-package indent-guide
     :defer 2
-    :ensure t 
+    :ensure t
     :config (indent-guide-global-mode))
 
 ;; Markdown Mode
-(use-package markdown-mode 
+(use-package markdown-mode
     :ensure t
-    :defer 2 
+    :defer 2
     :commands (markdown-mode gfm-mode)
-    :mode (("README\\.md\\'" . gfm-mode) 
-        ("\\.txt\\'" . markdown-mode) 
-        ("\\.md\\'" . markdown-mode) 
+    :mode (("README\\.md\\'" . gfm-mode)
+        ("\\.txt\\'" . markdown-mode)
+        ("\\.md\\'" . markdown-mode)
         ("\\.markdown\\'" . markdown-mode))
     :init (setq markdown-command "multimarkdown"))
 
@@ -138,10 +138,10 @@
     ;; config stuff
         ))
 
-;; Flycheck 
-(use-package flycheck 
-  :defer 2 
-  :ensure t 
+;; Flycheck
+(use-package flycheck
+  :defer 2
+  :ensure t
   :config(global-flycheck-mode))
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
@@ -154,11 +154,11 @@
 (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
 
-;; Company 
-(use-package company 
-  :defer 2 
-  :ensure t 
-  :config (company-mode +1) 
+;; Company
+(use-package company
+  :defer 2
+  :ensure t
+  :config (company-mode +1)
   (global-company-mode +1))
 
 
@@ -176,7 +176,7 @@
         :defer 2
         :ensure t
         :config (setq inferior-lisp-program "/usr/local/bin/sbcl")
-        (setq slime-contribs '(slime-fancy 
+        (setq slime-contribs '(slime-fancy
             slime-sbcl-exts
             slime-cl-indent
             slime-asdf
@@ -189,9 +189,9 @@
         :ensure t)
 
     ;; Git ╰(˙ᗜ˙)੭━☆ﾟ.*･｡ﾟ (only works on emacs 25+)
-    (use-package 
+    (use-package
         magit
-        :defer 2 
+        :defer 2
         :ensure t))
 
     ;; And if you are running an older version...
