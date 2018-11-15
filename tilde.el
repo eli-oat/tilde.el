@@ -2,7 +2,8 @@
 (scroll-bar-mode -1)
 (tool-bar-mode   -1)
 (tooltip-mode    -1)
-(menu-bar-mode   -1)
+;; (menu-bar-mode   -1) ; I like the menu-bar (because I am a monster)
+(cua-mode t nil (cua-base)) ; allow for normal copy/paste behavior (because I am a monster)
 (add-hook 'prog-mode-hook 'linum-mode)
 
 ;; Basic stuff to make writing code better
