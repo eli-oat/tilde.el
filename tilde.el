@@ -2,9 +2,14 @@
 (scroll-bar-mode -1)
 (tool-bar-mode   -1)
 (tooltip-mode    -1)
-;; (menu-bar-mode   -1) ; I like the menu-bar (because I am a monster)
 (cua-mode t nil (cua-base)) ; allow for normal copy/paste behavior (because I am a monster)
 (add-hook 'prog-mode-hook 'linum-mode)
+
+;; Display the menu bar *if* and only if in GUI.
+(if (display-graphic-p)
+    (progn
+      (menu-bar-mode 1))
+  (menu-bar-mode -1))
 
 ;; Basic stuff to make writing code better
 (electric-indent-mode +1) ; Indent new lines like the previous
