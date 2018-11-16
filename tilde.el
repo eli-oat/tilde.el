@@ -7,7 +7,7 @@
 ;; Display the menu bar *if* and only if in GUI.
 (add-hook 'after-make-frame-functions
   (lambda ()
-    (if window-system
+    (if display-graphic-p 
       (menu-bar-mode t)
       (menu-bar-mode -1))))
 
