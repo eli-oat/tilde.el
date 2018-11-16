@@ -8,7 +8,8 @@
 (add-hook 'after-make-frame-functions
   (lambda ()
     (if window-system
-      (menu-bar-mode t))))
+      (menu-bar-mode t)
+      (menu-bar-mode -1))))
 
 ;; Basic stuff to make writing code better
 (electric-indent-mode +1) ; Indent new lines like the previous
