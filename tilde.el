@@ -2,7 +2,6 @@
 (scroll-bar-mode -1)
 (tool-bar-mode   -1)
 (tooltip-mode    -1)
-(cua-mode t nil (cua-base)) ; allow for normal copy/paste behavior (because I am a monster)
 (add-hook 'prog-mode-hook 'linum-mode)
 
 ;; Display the menu bar *if* and only if in GUI.
