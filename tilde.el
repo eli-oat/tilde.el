@@ -6,10 +6,10 @@
 (add-hook 'prog-mode-hook 'linum-mode)
 
 ;; Display the menu bar *if* and only if in GUI.
-(if (display-graphic-p)
-    (progn
-      (menu-bar-mode 1))
-  (menu-bar-mode -1))
+(add-hook 'after-make-frame-functions
+  (lambda ()
+    (if window-system
+      (menu-bar-mode t)))))
 
 ;; Basic stuff to make writing code better
 (electric-indent-mode +1) ; Indent new lines like the previous
