@@ -1,15 +1,9 @@
 ;; Minimal UI
 (scroll-bar-mode -1)
 (tool-bar-mode   -1)
+(menu-bar-mode    t) ; I like the menu bar?
 (tooltip-mode    -1)
 (add-hook 'prog-mode-hook 'linum-mode)
-
-;; Display the menu bar *if* and only if in GUI.
-(add-hook 'after-make-frame-functions
-  (lambda ()
-    (if display-graphic-p 
-      (menu-bar-mode t)
-      (menu-bar-mode -1))))
 
 ;; Basic stuff to make writing code better
 (electric-indent-mode +1) ; Indent new lines like the previous
