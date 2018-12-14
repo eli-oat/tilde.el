@@ -6,14 +6,14 @@
 (add-hook 'prog-mode-hook 'linum-mode)
 
 ;; Basic stuff to make writing code better
-(electric-indent-mode +1) ; Indent new lines like the previous
-(electric-pair-mode 1) ; Matching delimiters
-(global-visual-line-mode 1) ; Wrap lines
+(electric-indent-mode        +1) ; Indent new lines like the previous
+(electric-pair-mode           1) ; Matching delimiters
+(global-visual-line-mode      1) ; Wrap lines
 (global-prettify-symbols-mode 1) ; Pretty symbols
 
 ; Show Matching Parens
 (setq show-paren-delay 0)
-(show-paren-mode 1)
+(show-paren-mode       1)
 
 ;; Disable backup files
 (setq make-backup-files nil) ; stop creating backup~ files
@@ -95,6 +95,12 @@
 (use-package rainbow-identifiers
     :ensure t
     :defer 2)
+
+;; Highlight TODO and FIXME
+(use-package hl-todo
+  :ensure t
+  :defer 2
+  :config (add-hook 'prog-mode-hook #'hl-todo-mode))
 
 ;; Indent Guide
 (use-package indent-guide
