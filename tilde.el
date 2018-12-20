@@ -147,3 +147,9 @@
   :ensure t
   :config (company-mode +1)
   (global-company-mode +1))
+
+;; Golden Ratio
+(use-package golden-ratio
+  :defer 2
+  :ensure t
+  :config (golden-ratio-mode 1))
