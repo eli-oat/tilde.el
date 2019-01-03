@@ -23,16 +23,6 @@
 (setq inhibit-startup-message t
     initial-scratch-message nil)
 
-;; Vim Mode
-(use-package evil
-    :ensure t
-    :config (evil-mode 1))
-(use-package evil-escape
-    :ensure t
-    :init
-    (setq-default evil-escape-key-sequence "jk")
-    :config (evil-escape-mode 1))
-
 ;; Theme
 (use-package dracula-theme
    :ensure t
@@ -66,26 +56,6 @@
     (setq which-key-separator " ")
     (setq which-key-prefix-prefix "+")
     :config (which-key-mode 1))
-
-;; Custom Key Bindings
-(use-package general
-    :ensure t
-    :config (general-define-key
-        :states '(normal visual insert emacs)
-        :prefix "SPC"
-        :non-normal-prefix "M-SPC"
-        "TAB" '(switch-to-prev-buffer :which-key "previous buffer")
-        "SPC" '(helm-M-x :which-key "M-x")
-        "pf"  '(helm-find-files :which-key "find files")
-        "bb"  '(helm-buffers-list :which-key "buffers list")
-        "wl"  '(windmove-right :which-key "move right")
-        "wh"  '(windmove-left :which-key "move left")
-        "wk"  '(windmove-up :which-key "move up")
-        "wj"  '(windmove-down :which-key "move bottom")
-        "w/"  '(split-window-right :which-key "split right")
-        "w-"  '(split-window-below :which-key "split bottom")
-        "wx"  '(delete-window :which-key "delete window")
-        "at"  '(ansi-term :which-key "open terminal")))
 
 ;; Rainbows
 (use-package rainbow-delimiters

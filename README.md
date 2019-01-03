@@ -1,3 +1,7 @@
+🚨🚨🚨 This Branch Breaks the Key Bindings! 🚨🚨🚨
+
+Experimenting with normal emacs key chords instead of vi key bindings.
+
 # User Manual 
 
 This started as a bare-bones setup for noodling on [tilde.town](https://tilde.town), but has since become my go-to setup for all things emacs. Evil, sort of like a really tiny [spacemacs](http://spacemacs.org/).
