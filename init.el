@@ -6,6 +6,9 @@
     (lambda ()
         (setq gc-cons-threshold 400000)))
 
+;; Run emacs server
+(server-start)
+
 ;; Package configs
 (require 'package)
 (setq package-enable-at-startup nil)
