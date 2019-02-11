@@ -3,7 +3,9 @@
 (tool-bar-mode   -1)
 (menu-bar-mode    t) ; I like the menu bar?
 (tooltip-mode    -1)
-(add-hook 'prog-mode-hook 'linum-mode)
+(setq-default indent-tabs-mode nil) ; spaces instead of tabs
+(setq-default tab-width 4) ; the default is 8!?
+; (add-hook 'prog-mode-hook 'linum-mode) ; Line numbers
 
 ;; Basic stuff to make writing code better
 (electric-indent-mode        +1) ; Indent new lines like the previous
@@ -60,7 +62,6 @@
 ;; Rainbows
 (use-package rainbow-delimiters
     :ensure t
-    :defer 2
     :config (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)) ; on by default
 (use-package rainbow-identifiers
     :ensure t
@@ -69,19 +70,16 @@
 ;; Highlight TODO and FIXME
 (use-package hl-todo
   :ensure t
-  :defer 2
   :config (add-hook 'prog-mode-hook #'hl-todo-mode))
 
 ;; Indent Guide
 (use-package indent-guide
     :ensure t
-    :defer 2
     :config (indent-guide-global-mode)) ; on by default
 
 ;; Markdown Mode
 (use-package markdown-mode
     :ensure t
-    :defer 2
     :commands (markdown-mode gfm-mode)
     :mode (("README\\.md\\'" . gfm-mode)
         ("\\.txt\\'" . markdown-mode)
@@ -92,19 +90,16 @@
 ;; Org Mode
 (use-package org
   :mode (("\\.org$" . org-mode))
-  :ensure t
-  :defer 2)
+  :ensure t)
 
 ;; Flycheck
 (use-package flycheck
     :ensure t
-    :defer 2
     :config (global-flycheck-mode))
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; Web Mode
 (use-package web-mode
-  :defer 2
   :ensure t)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
@@ -113,13 +108,11 @@
 
 ;; Company
 (use-package company
-  :defer 2
   :ensure t
   :config (company-mode +1)
   (global-company-mode +1))
 
 ;; Golden Ratio
 (use-package golden-ratio
-  :defer 2
   :ensure t
   :config (golden-ratio-mode 1))
