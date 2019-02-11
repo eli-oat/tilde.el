@@ -106,6 +106,17 @@
 (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
 
+;; SLIME
+(use-package slime
+    :ensure t
+    :config (setq inferior-lisp-program "/usr/local/bin/sbcl") ; be sure to configure your preferred flavor of lisp!
+    (setq slime-contribs '(slime-fancy
+        slime-sbcl-exts
+        slime-cl-indent
+        slime-asdf
+        slime-fancy-inspector
+        slime-autodoc)))
+
 ;; Company
 (use-package company
   :ensure t
