@@ -3,13 +3,70 @@
 (tool-bar-mode   -1)
 (menu-bar-mode    t) ; I like the menu bar?
 (tooltip-mode    -1)
-(add-hook 'prog-mode-hook 'linum-mode)
+; (add-hook 'prog-mode-hook 'linum-mode) ; line numbers
 
 ;; Basic stuff to make writing code better
 (electric-indent-mode        +1) ; Indent new lines like the previous
 (electric-pair-mode           1) ; Matching delimiters
 (global-visual-line-mode      1) ; Wrap lines
 (global-prettify-symbols-mode 1) ; Pretty symbols
+
+;; Custo modeline
+(setq-default mode-line-format
+              (list
+               ;; day and time
+               '(:eval (propertize (format-time-string " %b %d %H:%M ")
+                                   'face 'font-lock-builtin-face))
+
+
+               '(:eval (propertize (substring vc-mode 5)
+                                   'face 'font-lock-comment-face))
+
+               ;; the buffer name; the file name as a tool tip
+               '(:eval (propertize " %b "
+                                   'face
+                                   (let ((face (buffer-modified-p)))
+                                     (if face 'font-lock-warning-face
+                                       'font-lock-type-face))
+                                   'help-echo (buffer-file-name)))
+
+               ;; line and column
+               " (" ;; '%02' to set to 2 chars at least; prevents flickering
+               (propertize "%02l" 'face 'font-lock-keyword-face) ","
+               (propertize "%02c" 'face 'font-lock-keyword-face)
+               ") "
+
+               ;; relative position, size of file
+               " ["
+               (propertize "%p" 'face 'font-lock-constant-face) ;; % above top
+               "/"
+               (propertize "%I" 'face 'font-lock-constant-face) ;; size
+               "] "
+
+               ;; spaces to align right
+               '(:eval (propertize
+                " " 'display
+                `((space :align-to (- (+ right right-fringe right-margin)
+                                      ,(+ 3 (string-width mode-name)))))))
+
+               ;; the current major mode
+               (propertize " %m " 'face 'font-lock-string-face)
+               ;;minor-mode-alist
+               ))
+
+(set-face-attribute 'mode-line nil
+                    :background "#353644"
+                    :foreground "white"
+                    :box '(:line-width 8 :color "#353644")
+                    :overline nil
+                    :underline nil)
+
+(set-face-attribute 'mode-line-inactive nil
+                    :background "#565063"
+                    :foreground "white"
+                    :box '(:line-width 8 :color "#565063")
+                    :overline nil
+:underline nil)
 
 ; Show Matching Parens
 (setq show-paren-delay 0)
@@ -138,6 +195,7 @@
   :ensure t)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.hbs\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
 
