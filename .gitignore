@@ -1,5 +1,8 @@
+.DS_Store
+*/.DS_Store
+.cache
 auto-save-list
 elpa
+eshell
 projectile-bookmarks.eld
 tree-fort.el
-.DS_Store
