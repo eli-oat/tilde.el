@@ -200,11 +200,11 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
 
 ;; Company
-(use-package company
-  :defer 2
-  :ensure t
-  :config (company-mode +1)
-  (global-company-mode +1))
+(use-package company 
+  :ensure t 
+  :init (setq company-dabbrev-downcase 0 company-idle-delay 0) 
+  :config (progn (company-mode +1)
+  (global-company-mode +1)))
 
 ;; Golden Ratio
 (use-package golden-ratio
